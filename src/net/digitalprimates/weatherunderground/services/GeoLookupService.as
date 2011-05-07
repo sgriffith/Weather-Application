@@ -5,12 +5,14 @@ package net.digitalprimates.weatherunderground.services
 	import mx.rpc.events.ResultEvent;
 	import mx.rpc.http.HTTPService;
 	
+	import net.digitalprimates.weatherunderground.data.GeoLocation;
+	import net.digitalprimates.weatherunderground.events.GeoServiceEvent;
 	import net.digitalprimates.weatherunderground.events.ServiceEvent;
 	
 	public class GeoLookupService extends HTTPService
 	{
 		private const REQUEST_URL:String = "http://api.wunderground.com/auto/wui/geo/GeoLookupXML/index.xml";
-		public var result:Object;
+		public var result:XML;
 		
 		public function sendRequest(queryLocation:String):void{
 			
@@ -26,8 +28,9 @@ package net.digitalprimates.weatherunderground.services
 		
 		protected function responseReceived(event:ResultEvent):void{
 			
-			result = event.result;
-			dispatchEvent(new ServiceEvent(ServiceEvent.GEO_LOOKUP_DATA_CHANGED, result));
+			result = XML(event.result);
+			var geoLoc:GeoLocation = new GeoLocation(result);
+			dispatchEvent(new GeoServiceEvent(GeoServiceEvent.GEO_LOCATION_DATA_RECIEVED, geoLoc));
 		}
 		
 		protected function responseError(event:Event):void{

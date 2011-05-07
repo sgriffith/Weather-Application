@@ -33,6 +33,10 @@ package net.digitalprimates.weatherunderground.data
 
 		public function get textForecastDays():ArrayList
 		{
+			if(!_textForecastDays)
+			{
+				_textForecastDays = new ArrayList();
+			}
 			return _textForecastDays;
 		}
 
@@ -43,6 +47,10 @@ package net.digitalprimates.weatherunderground.data
 
 		public function get simpleForecastDays():ArrayList
 		{
+			if(!_simpleForecastDays)
+			{
+				_simpleForecastDays = new ArrayList();
+			}
 			return _simpleForecastDays;
 		}
 
@@ -79,10 +87,10 @@ package net.digitalprimates.weatherunderground.data
 			textForecastDay.icon = forecastDay.icon;
 			textForecastDay.title = forecastDay.title;
 			textForecastDay.fcttext = forecastDay.fcttext;
-			for(var i:int = 0; i<forecastDay.icons.icon_set.length(); i++)
-			{
-				textForecastDay.iconSet.addItem(parseIconSet(forecastDay.icons.icon_set[i]));
-			}
+			//for(var i:int = 0; i<forecastDay.icons.icon_set.length(); i++)
+			//{
+			//	textForecastDay.iconSet.addItem(parseIconSet(forecastDay.icons.icon_set[i]));
+			//}
 			
 			return textForecastDay;
 		}
@@ -113,7 +121,7 @@ package net.digitalprimates.weatherunderground.data
 			return simpleForecastDay;
 		}
 		
-		private function parseSimpleForecastDate(forecastDate:XML):WeatherDate
+		private function parseSimpleForecastDate(forecastDate:XMLList):WeatherDate
 		{
 			var weatherDate:WeatherDate = new WeatherDate();
 			weatherDate.epoch = forecastDate.epoch;

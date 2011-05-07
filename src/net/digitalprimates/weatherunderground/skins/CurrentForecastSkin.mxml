@@ -5,4 +5,28 @@
 	<fx:Metadata>
 		[HostComponent("net.digitalprimates.weatherunderground.components.CurrentForecast")]
 	</fx:Metadata>
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	
+	<s:HGroup>
+		<s:Label text="High: "/>
+		<s:Label id="highLabel"/>
+	</s:HGroup>
+	
+	<s:HGroup>
+		<s:Label text="Low: "/>
+		<s:Label id="lowLabel"/>
+	</s:HGroup>
+	
+	<s:HGroup>
+		<s:Label text="Conditions: "/>
+		<s:Label id="conditionLabel"/>
+	</s:HGroup>
+	
+	<s:HGroup>
+		<s:Label text="Description: "/>
+		<s:Label id="descriptionLabel"/>
+	</s:HGroup>
 </s:Skin>
