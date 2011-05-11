@@ -478,8 +478,41 @@ package net.digitalprimates.weatherunderground.data
 			_obUrl = value;
 		}
 		
-		public function AirportWeatherStation()
+		public function parseXML(xml:XML):void
 		{
+			// TODO Auto Generated method stub
+			trace("xml: " + xml);
+			
+			credit = xml.credit;
+			creditUrl = xml.credit_URL;
+			
+			var displayLocation_:DisplayLocation = new DisplayLocation();
+			displayLocation_.full = xml.display_location.full;
+			
+			displayLocation = displayLocation_;
+			
+			var observationLocation_:ObservationLocation = new ObservationLocation();
+			observationLocation_.full = xml.observation_location.full;
+			
+			observationLocation = observationLocation_;
+			
+			temperatureString = xml.temperature_string;
+			dewpointString = xml.dewpoint_string;
+			windString = xml.wind_string;
+			relativeHumidity = xml.relative_humidity;
+			
+			iconUrlBase = xml.icon_url_base;
+			iconUrlName = xml.icon_url_name;
+			icon = xml.icon;
 		}
+		
+		public function AirportWeatherStation(xml:XML = null)
+		{
+			if(xml)
+			{
+				parseXML(xml);
+			}
+		}
+		
 	}
 }

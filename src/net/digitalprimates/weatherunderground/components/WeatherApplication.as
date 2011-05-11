@@ -1,9 +1,14 @@
 package net.digitalprimates.weatherunderground.components
 {
 	
+	import flash.events.Event;
+	
+	import net.digitalprimates.weatherunderground.data.AirportWeatherStation;
 	import net.digitalprimates.weatherunderground.data.LocationForecast;
+	import net.digitalprimates.weatherunderground.events.AirportWeatherStationServiceEvent;
 	import net.digitalprimates.weatherunderground.events.ForecastServiceEvent;
 	import net.digitalprimates.weatherunderground.events.LoginEvent;
+	import net.digitalprimates.weatherunderground.services.AirportWeatherStationService;
 	import net.digitalprimates.weatherunderground.services.ForecastService;
 	
 	import spark.components.supportClasses.SkinnableComponent;
@@ -14,7 +19,7 @@ package net.digitalprimates.weatherunderground.components
 	{
 		
 		private var state:String = "login";
-		private var locationForecastInfo:LocationForecast;
+		private var locationForecastInfo:AirportWeatherStation;
 		//*****************************************************
 		//
 		//			SkinStates
@@ -48,17 +53,17 @@ package net.digitalprimates.weatherunderground.components
 		
 		protected function handleLoginEvent(event:LoginEvent):void
 		{
-			// TODO Auto-generated method stub
-			var forecastService:ForecastService = new ForecastService();
-			forecastService.addEventListener(ForecastServiceEvent.LOCATION_DATA_RECIEVED, handleForecastServiceRecieve, false, 0, true);
-			forecastService.sendRequest(event.zipCode);
+			// The initial location is passed into the airport weather station service
+			var currentForecast:AirportWeatherStationService = new AirportWeatherStationService();
+			currentForecast.addEventListener(AirportWeatherStationServiceEvent.AIRPORT_DATA_RECIEVED,
+				handleAirportWeatherStationRecieve, false, 0, true);
+			currentForecast.sendRequest(event.zipCode);
 		}
 		
-		protected function handleForecastServiceRecieve(event:ForecastServiceEvent):void
+		protected function handleAirportWeatherStationRecieve(event:AirportWeatherStationServiceEvent):void
 		{
 			// TODO Auto-generated method stub
-			locationForecastInfo = event.locationForecast;
-			
+			locationForecastInfo = event.airportWeatherStation;
 			state = "currentForecast";
 			invalidateSkinState();
 		}
@@ -80,7 +85,6 @@ package net.digitalprimates.weatherunderground.components
 		//******************************************************
 		override protected function getCurrentSkinState():String
 		{
-			//return super.getCurrentSkinState();
 			return state;
 		} 
 		

@@ -10,6 +10,11 @@ package net.digitalprimates.weatherunderground.events
 		
 		public var geoLocation:GeoLocation;
 		
+		public override function clone():Event
+		{
+			return new GeoServiceEvent(type, geoLocation);
+		}
+		
 		public function GeoServiceEvent(type:String, geoLocation:GeoLocation)
 		{
 			super(type);

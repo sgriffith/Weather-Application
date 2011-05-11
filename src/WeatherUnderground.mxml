@@ -3,6 +3,10 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" xmlns:components="net.digitalprimates.weatherunderground.components.*">
 	<fx:Script>
 		<![CDATA[
+			import net.digitalprimates.weatherunderground.components.RadarScreen;
+			import net.digitalprimates.weatherunderground.components.WebcamScreen;
+			import net.digitalprimates.weatherunderground.components.AlertScreen;
+			import net.digitalprimates.weatherunderground.components.LocationSelection;
 			import net.digitalprimates.weatherunderground.components.WeatherApplication;
 			import net.digitalprimates.weatherunderground.components.ExtendedForecast;
 			import net.digitalprimates.weatherunderground.components.CurrentForecast;
@@ -15,11 +19,19 @@
 			private var net_digitalprimates_weatherunderground_components_ExtendedForecast_obj:net.digitalprimates.weatherunderground.components.ExtendedForecast;
 			
 			private var net_digitalprimates_weatherunderground_components_WeatherApplication_obj:net.digitalprimates.weatherunderground.components.WeatherApplication;
+			
+			private var net_digitalprimates_weatherunderground_components_LocationSelection_obj:net.digitalprimates.weatherunderground.components.LocationSelection;
+			
+			private var net_digitalprimates_weatherunderground_components_AlertScreen_obj:net.digitalprimates.weatherunderground.components.AlertScreen;
+			
+			private var net_digitalprimates_weatherunderground_components_WebcamScreen_obj:net.digitalprimates.weatherunderground.components.WebcamScreen;
+			
+			private var net_digitalprimates_weatherunderground_components_RadarScreen_obj:net.digitalprimates.weatherunderground.components.RadarScreen;
 		]]>
 	</fx:Script>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<components:WeatherApplication width="100%" height="100%"
-		skinClass="net.digitalprimates.weatherunderground.skins.WeatherApplicationSkin"/>
+								   skinClass="net.digitalprimates.weatherunderground.skins.WeatherApplicationSkin"/>
 </s:Application>

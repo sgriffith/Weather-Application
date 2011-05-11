@@ -7,14 +7,39 @@
 		[HostComponent("net.digitalprimates.weatherunderground.components.WeatherApplication")]
 	</fx:Metadata>
 	
-	<!--[SkinState("login")]
-	[SkinState("currentForecast")]
-	[SkinState("extendedForecast")]-->
 	<s:states>
 		<s:State name="login"/>
 		<s:State name="currentForecast"/>
 		<s:State name="extendedForecast"/>
 	</s:states>
+	
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	
+	<s:ActionBar width="100%"
+				 excludeFrom="login">
+		<s:titleContent.currentForecast>
+			<s:Label text="Current Forecast"/>
+		</s:titleContent.currentForecast>
+		<s:titleContent.extendedForecast>
+			<s:Label text="Extended Forecast"/>
+		</s:titleContent.extendedForecast>
+		<s:actionContent>
+			<s:Button id="locationButton" label="Location"/>
+			<s:Button id="radarButton" label="Radar"/>
+			<s:Button id="currentButton" label="Current"
+					  excludeFrom="currentForecast,login"/>
+			<s:Button id="extendedButton" label="Extended"
+					  excludeFrom="extendedForecast,login"/>
+			<s:Button id="labelButton" label="Airport"/>
+			<s:Button id="personalButton" label="Personal"/>
+			<s:Button id="alertButton" label="Alerts"/>
+			<s:Button id="webcamButton" label="Webcams"/>
+		</s:actionContent>
+
+	</s:ActionBar>
 	
 	<components:LoginScreen width="100%" height="100%"
 							id="loginScreen"
@@ -24,5 +49,6 @@
 	<components:CurrentForecast width="100%" height="100%"
 								id="currentForecastScreen"
 								includeIn="currentForecast"
-								skinClass="net.digitalprimates.weatherunderground.skins.CurrentForecastSkin"/>
+								skinClass="net.digitalprimates.weatherunderground.skins.CurrentForecastSkin"/>	
+	
 </s:Skin>

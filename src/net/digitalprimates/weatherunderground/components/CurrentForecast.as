@@ -1,12 +1,16 @@
 package net.digitalprimates.weatherunderground.components
 {
 	
+	import net.digitalprimates.weatherunderground.data.AirportWeatherStation;
+	import net.digitalprimates.weatherunderground.data.DisplayLocation;
 	import net.digitalprimates.weatherunderground.data.GeoLocation;
 	import net.digitalprimates.weatherunderground.data.LocationForecast;
+	import net.digitalprimates.weatherunderground.data.ObservationLocation;
 	import net.digitalprimates.weatherunderground.data.SimpleForecastDay;
 	import net.digitalprimates.weatherunderground.data.TextForecastDay;
 	import net.digitalprimates.weatherunderground.interfaces.ICurrentForecast;
 	
+	import spark.components.Image;
 	import spark.components.Label;
 	import spark.components.supportClasses.SkinnableComponent;
 	
@@ -14,66 +18,92 @@ package net.digitalprimates.weatherunderground.components
 	
 	public class CurrentForecast extends SkinnableComponent
 	{	
-		private var _locationForecast:LocationForecast;
-		private var _currentTextForecast:TextForecastDay;
-		private var _currentSimpleForecast:SimpleForecastDay;
+		private var _airportWeatherStation:AirportWeatherStation;
+		private var _displayLocation:DisplayLocation;
+		private var _observationLocation:ObservationLocation;
 		
 		//*****************************************************
 		//
 		//			SkinParts
 		//
 		//*****************************************************		
-		[SkinPart(required="false")]
-		public var highLabel:Label;
+		[SkinPart(required="true")]
+		public var currentTemp:Label;
+		
+		[SkinPart(required="true")]
+		public var currentHumidity:Label;
+		
+		[SkinPart(required="true")]
+		public var currentWindSpeed:Label;
+		
+		[SkinPart(required="true")]
+		public var currentDewPoint:Label;	
+		
+		[SkinPart(required="true")]
+		public var observationLocation:Label;
+		
+		[SkinPart(required="true")]
+		public var displayLocation:Label;
 		
 		[SkinPart(required="false")]
-		public var lowLabel:Label;
+		public var weatherIcon:Image;
 		
-		[SkinPart(required="false")]
-		public var conditionLabel:Label;
-		
-		[SkinPart(required="false")]
-		public var descriptionLabel:Label;		
-		
-		
-		public function set locationForecast(value:LocationForecast):void
+		public function set locationForecast(value:AirportWeatherStation):void
 		{
-			_locationForecast = value;
+			_airportWeatherStation = value;
 			
-			_currentTextForecast = (_locationForecast.textForecastDays.getItemAt(0) as TextForecastDay);
-			_currentSimpleForecast = (_locationForecast.simpleForecastDays.getItemAt(0) as SimpleForecastDay);
+			_observationLocation = _airportWeatherStation.observationLocation;
+			_displayLocation = _airportWeatherStation.displayLocation;
 			
 			setLabels();
 		}
 		
 		
 		
-		public function get locationForecast():LocationForecast
+		public function get locationForecast():AirportWeatherStation
 		{
 			return null;
 		}
 		
 		private function setLabels():void
 		{
-			// TODO Auto Generated method stub
-			if(lowLabel)
+			if(currentHumidity)
 			{
-				lowLabel.text = _currentSimpleForecast.lowF;
+				currentHumidity.text = _airportWeatherStation.relativeHumidity;
 			}
 			
-			if(highLabel)
+			if(currentTemp)
 			{
-				highLabel.text = _currentSimpleForecast.highF;
+				currentTemp.text = _airportWeatherStation.temperatureString;
 			}
 			
-			if(conditionLabel)
+			if(currentDewPoint)
 			{
-				conditionLabel.text = _currentSimpleForecast.conditions;
+				currentDewPoint.text = _airportWeatherStation.dewpointString;
 			}
 			
-			if(descriptionLabel)
+			if(currentWindSpeed)
 			{
-				descriptionLabel.text = _currentTextForecast.fcttext;
+				currentWindSpeed.text = _airportWeatherStation.windString;
+			}
+			
+			if(observationLocation)
+			{
+				observationLocation.text = _observationLocation.full;
+			}
+			
+			if(displayLocation)
+			{
+				displayLocation.text = _displayLocation.full;
+			}
+			
+			if(weatherIcon)
+			{
+				var sourceString:String = _airportWeatherStation.iconUrlBase +
+					_airportWeatherStation.icon +
+					_airportWeatherStation.iconUrlName;
+				
+				weatherIcon.source = sourceString;
 			}
 		}
 		

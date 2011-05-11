@@ -10,6 +10,11 @@ package net.digitalprimates.weatherunderground.events
 		
 		public var locationForecast:LocationForecast;
 		
+		public override function clone():Event
+		{
+			return new ForecastServiceEvent(type, locationForecast);
+		}
+		
 		public function ForecastServiceEvent(type:String, locationForecast:LocationForecast)
 		{
 			super(type);

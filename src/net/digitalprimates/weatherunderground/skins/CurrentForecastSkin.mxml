@@ -10,23 +10,33 @@
 		<s:VerticalLayout/>
 	</s:layout>
 	
+	<s:HGroup width="100%" horizontalAlign="center">
+		<s:Label text="Currently in "/>
+		<s:Label id="displayLocation"/>		
+	</s:HGroup>
+	<s:Image id="weatherIcon"/>
 	<s:HGroup>
-		<s:Label text="High: "/>
-		<s:Label id="highLabel"/>
+		<s:Label text="Temp: "/>
+		<s:Label id="currentTemp"/>
 	</s:HGroup>
 	
 	<s:HGroup>
-		<s:Label text="Low: "/>
-		<s:Label id="lowLabel"/>
+		<s:Label text="Dewpoint: "/>
+		<s:Label id="currentDewPoint"/>
 	</s:HGroup>
 	
 	<s:HGroup>
-		<s:Label text="Conditions: "/>
-		<s:Label id="conditionLabel"/>
+		<s:Label text="Windspeed: "/>
+		<s:Label id="currentWindSpeed"/>
 	</s:HGroup>
 	
 	<s:HGroup>
-		<s:Label text="Description: "/>
-		<s:Label id="descriptionLabel"/>
+		<s:Label text="Humidity: "/>
+		<s:Label id="currentHumidity"/>
+	</s:HGroup>
+	
+	<s:HGroup bottom="0" width="100%">
+		<s:Label text="Reported from: "/>
+		<s:Label id="observationLocation"/>		
 	</s:HGroup>
 </s:Skin>

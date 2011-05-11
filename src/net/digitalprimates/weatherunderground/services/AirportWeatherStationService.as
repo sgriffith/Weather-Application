@@ -5,14 +5,16 @@ package net.digitalprimates.weatherunderground.services
 	import mx.rpc.events.ResultEvent;
 	import mx.rpc.http.HTTPService;
 	
+	import net.digitalprimates.weatherunderground.data.AirportWeatherStation;
+	import net.digitalprimates.weatherunderground.events.AirportWeatherStationServiceEvent;
 	import net.digitalprimates.weatherunderground.events.ServiceEvent;
 	
 	public class AirportWeatherStationService extends HTTPService
 	{
 		private const REQUEST_URL:String = "http://api.wunderground.com/auto/wui/geo/WXCurrentObXML/index.xml";
-		private var result:Object;
+		private var result:XML;
 		
-		public function sendRequest(awsId:String){
+		public function sendRequest(awsId:String):void{
 			var requestObject:Object = new Object();
 			requestObject.query = awsId;
 			
@@ -23,13 +25,15 @@ package net.digitalprimates.weatherunderground.services
 			send(requestObject);
 		}
 		
-		protected function responseReceived(event:ResultEvent){
+		protected function responseReceived(event:ResultEvent):void{
 			
-			result = event.result;
-			dispatchEvent(new ServiceEvent(ServiceEvent.AWS_DATA_CHANGED,result);
+			result = (event.result as XML);
+			dispatchEvent(new AirportWeatherStationServiceEvent(
+				AirportWeatherStationServiceEvent.AIRPORT_DATA_RECIEVED,
+				new AirportWeatherStation(result)));
 		}
 		
-		protected function responseError(event:Event){
+		protected function responseError(event:Event):void{
 			
 		}
 		

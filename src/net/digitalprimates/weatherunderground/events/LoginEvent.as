@@ -9,7 +9,7 @@ package net.digitalprimates.weatherunderground.events
 		
 		public override function clone():Event
 		{
-			return new ServiceEvent(type, zipCode);
+			return new LoginEvent(type, zipCode);
 		}
 		
 		public function LoginEvent(type:String, zipCode:String)
