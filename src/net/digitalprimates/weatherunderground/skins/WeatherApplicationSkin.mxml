@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
-		xmlns:components="net.digitalprimates.weatherunderground.components.*">
+		xmlns:components="net.digitalprimates.weatherunderground.components.*" xmlns:current="net.digitalprimates.weatherunderground.forecast.current.*" xmlns:login="net.digitalprimates.weatherunderground.login.*" xmlns:radar="net.digitalprimates.weatherunderground.radar.*">
 	<!-- host component -->
 	<fx:Metadata>
 		[HostComponent("net.digitalprimates.weatherunderground.components.WeatherApplication")]
@@ -11,6 +11,7 @@
 		<s:State name="login"/>
 		<s:State name="currentForecast"/>
 		<s:State name="extendedForecast"/>
+		<s:State name="radar"/>
 	</s:states>
 	
 	
@@ -26,9 +27,13 @@
 		<s:titleContent.extendedForecast>
 			<s:Label text="Extended Forecast"/>
 		</s:titleContent.extendedForecast>
+		<s:titleContent.radar>
+			<s:Label text="Radar"/>
+		</s:titleContent.radar>
 		<s:actionContent>
 			<s:Button id="locationButton" label="Location"/>
-			<s:Button id="radarButton" label="Radar"/>
+			<s:Button id="radarButton" label="Radar"
+					  excludeFrom="radar,login"/>				
 			<s:Button id="currentButton" label="Current"
 					  excludeFrom="currentForecast,login"/>
 			<s:Button id="extendedButton" label="Extended"
@@ -41,14 +46,19 @@
 
 	</s:ActionBar>
 	
-	<components:LoginScreen width="100%" height="100%"
-							id="loginScreen"
-							includeIn="login"
-							skinClass="net.digitalprimates.weatherunderground.skins.LoginScreenSkin"/>
+	<radar:RadarScreen width="100%" height="100%"
+					   id="radarScreen"
+					   includeIn="radar"
+					   skinClass="net.digitalprimates.weatherunderground.radar.RadarScreenSkin"/>
 	
-	<components:CurrentForecast width="100%" height="100%"
-								id="currentForecastScreen"
-								includeIn="currentForecast"
-								skinClass="net.digitalprimates.weatherunderground.skins.CurrentForecastSkin"/>	
+	<login:LoginScreen width="100%" height="100%"
+				 	   id="loginScreen"
+					   includeIn="login"
+					   skinClass="net.digitalprimates.weatherunderground.login.LoginScreenSkin"/>
+	
+	<current:CurrentForecast width="100%" height="100%"
+							 id="currentForecastScreen"
+							 includeIn="currentForecast"
+							 skinClass="net.digitalprimates.weatherunderground.forecast.current.CurrentForecastSkin"/>	
 	
 </s:Skin>

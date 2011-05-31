@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("net.digitalprimates.weatherunderground.radar.RadarScreen")]
+	</fx:Metadata>
+
+	<s:layout>
+		<s:HorizontalLayout horizontalAlign="center"/>
+	</s:layout>
+	<!-- SkinParts
+	name=radarImage, type=net.digitalprimates.weatherunderground.data.Image, required=true
+	-->
+	
+	<s:Image id="radarImage" verticalAlign="middle"/>
+</s:Skin>

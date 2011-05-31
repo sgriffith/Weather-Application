@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("net.digitalprimates.weatherunderground.forecast.current.CurrentForecast")]
+	</fx:Metadata>
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	
+	<s:HGroup width="100%" horizontalAlign="center">
+		<s:Label text="Currently in "/>
+		<s:Label id="displayLocation"/>		
+	</s:HGroup>
+	<s:Image id="weatherIcon"/>
+	<s:HGroup>
+		<s:Label text="Temp: "/>
+		<s:Label id="currentTemp"/>
+	</s:HGroup>
+	
+	<s:HGroup>
+		<s:Label text="Dewpoint: "/>
+		<s:Label id="currentDewPoint"/>
+	</s:HGroup>
+	
+	<s:HGroup>
+		<s:Label text="Windspeed: "/>
+		<s:Label id="currentWindSpeed"/>
+	</s:HGroup>
+	
+	<s:HGroup>
+		<s:Label text="Humidity: "/>
+		<s:Label id="currentHumidity"/>
+	</s:HGroup>
+	
+	<s:HGroup bottom="0" width="100%">
+		<s:Label text="Reported from: "/>
+		<s:Label id="observationLocation"/>		
+	</s:HGroup>
+</s:Skin>

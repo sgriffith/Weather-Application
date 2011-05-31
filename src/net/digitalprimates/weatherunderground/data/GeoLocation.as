@@ -1,6 +1,7 @@
 package net.digitalprimates.weatherunderground.data
 {
 	import mx.collections.ArrayList;
+	import net.digitalprimates.weatherunderground.radar.RadarScreenData;
 
 	public class GeoLocation
 	{
@@ -16,7 +17,7 @@ package net.digitalprimates.weatherunderground.data
 		private var _wmo:String;
 		private var _requestUrl:String;
 		private var _wuiUrl:String;
-		private var _radar:Radar;
+		private var _radar:RadarScreenData;
 		private var _webcams:ArrayList;
 		private var _airportStations:ArrayList;
 		private var _personalStations:ArrayList;
@@ -141,12 +142,12 @@ package net.digitalprimates.weatherunderground.data
 			_wuiUrl = value;
 		}
 
-		public function get radar():Radar
+		public function get radar():RadarScreenData
 		{
 			return _radar;
 		}
 
-		public function set radar(value:Radar):void
+		public function set radar(value:RadarScreenData):void
 		{
 			_radar = value;
 		}
@@ -197,7 +198,7 @@ package net.digitalprimates.weatherunderground.data
 			requestUrl = xml.requesturl;
 			wuiUrl = xml.wuiurl;
 			
-			var radar:Radar = new Radar();
+			var radar:RadarScreenData = new RadarScreenData();
 			radar.imageUrl = xml.radar.imageUrl;
 			radar.url = xml.radar.url;
 			this.radar = radar;
