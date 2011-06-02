@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		width="100%">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("net.digitalprimates.weatherunderground.forecast.extended.day.Day")]
+	</fx:Metadata>
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	
+	<s:HGroup>
+		<s:Label text="High:"/>
+		<s:Label id="highTemp"/>
+	</s:HGroup>
+	
+	<s:HGroup>
+		<s:Label text="Low:"/>
+		<s:Label id="lowTemp"/>
+	</s:HGroup>
+	
+	<s:HGroup>
+		<s:Image id="icon"/>
+	</s:HGroup>
+	
+</s:Skin>

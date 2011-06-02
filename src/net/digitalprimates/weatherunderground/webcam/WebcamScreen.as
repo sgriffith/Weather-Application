@@ -1,14 +1,14 @@
-package net.digitalprimates.weatherunderground.components
+package net.digitalprimates.weatherunderground.webcam
 {
 	
 	import spark.components.supportClasses.SkinnableComponent;
 	
 	
 	
-	public class ExtendedForecast extends SkinnableComponent
+	public class WebcamScreen extends SkinnableComponent
 	{
 		
-		public function ExtendedForecast()
+		public function WebcamScreen()
 		{
 			super();
 		}

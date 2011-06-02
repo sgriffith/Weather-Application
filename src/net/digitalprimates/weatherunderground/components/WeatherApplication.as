@@ -51,7 +51,7 @@ package net.digitalprimates.weatherunderground.components
 		public var loginScreen:LoginScreen;
 		
 		[SkinPart(required="false")]
-		public var extendedForecast:ExtendedForecast;
+		public var extendedForecastScreen:ExtendedForecast;
 		
 		[SkinPart(required="false")]
 		public var currentForecastScreen:CurrentForecast;
@@ -64,6 +64,9 @@ package net.digitalprimates.weatherunderground.components
 		
 		[SkinPart(required="false")]
 		public var currentButton:Button;
+		
+		[SkinPart(required="false")]
+		public var extendedButton:Button;
 		
 		//******************************************************
 		//
@@ -108,6 +111,28 @@ package net.digitalprimates.weatherunderground.components
 			
 		}
 		
+		protected function handleExtendedButtonClick(event:MouseEvent):void
+		{
+			state = "extendedForecast";
+			invalidateSkinState();
+			updateExtendedForecast();
+		}
+		
+		//******************************************************
+		//
+		//			Methods
+		//
+		//******************************************************
+		
+		private function updateExtendedForecast():void
+		{
+			if(extendedForecastScreen)
+			{
+				extendedForecastScreen.location = location;
+			}
+			
+		}
+		
 		private function updateCurrentForecast():void
 		{
 			if(currentForecastScreen)
@@ -141,6 +166,11 @@ package net.digitalprimates.weatherunderground.components
 				updateCurrentForecast();
 			}
 			
+			if(instance == extendedForecastScreen)
+			{
+				updateExtendedForecast();
+			}
+			
 			if(instance == radarScreen)
 			{
 				radarScreen.location = location;	
@@ -155,8 +185,14 @@ package net.digitalprimates.weatherunderground.components
 			{
 				currentButton.addEventListener(MouseEvent.CLICK, handleCurrentButtonClick, false, 0, true);
 			}
+			if(instance == extendedButton)
+			{
+				extendedButton.addEventListener(MouseEvent.CLICK, handleExtendedButtonClick, false, 0, true);
+			}
 			
 		}
+		
+		
 		
 		override protected function partRemoved(partName:String, instance:Object) : void
 		{

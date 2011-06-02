@@ -3,8 +3,9 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" xmlns:components="net.digitalprimates.weatherunderground.components.*">
 	<fx:Script>
 		<![CDATA[
+			import net.digitalprimates.weatherunderground.forecast.extended.day.Day;
 			import net.digitalprimates.weatherunderground.radar.RadarScreen;
-			import net.digitalprimates.weatherunderground.components.WebcamScreen;
+			import net.digitalprimates.weatherunderground.webcam.WebcamScreen;
 			import net.digitalprimates.weatherunderground.alert.AlertScreen;
 			import net.digitalprimates.weatherunderground.components.LocationSelection;
 			import net.digitalprimates.weatherunderground.components.WeatherApplication;
@@ -24,9 +25,11 @@
 			
 			private var net_digitalprimates_weatherunderground_components_AlertScreen_obj:net.digitalprimates.weatherunderground.alert.AlertScreen;
 			
-			private var net_digitalprimates_weatherunderground_components_WebcamScreen_obj:net.digitalprimates.weatherunderground.components.WebcamScreen;
+			private var net_digitalprimates_weatherunderground_components_WebcamScreen_obj:net.digitalprimates.weatherunderground.webcam.WebcamScreen;
 			
 			private var net_digitalprimates_weatherunderground_components_RadarScreen_obj:net.digitalprimates.weatherunderground.radar.RadarScreen;
+			
+			private var net_digitalprimates_weatherunderground_forecast_extended_day_Day_obj:net.digitalprimates.weatherunderground.forecast.extended.day.Day;
 		]]>
 	</fx:Script>
 	<fx:Declarations>

@@ -6,7 +6,7 @@ package net.digitalprimates.weatherunderground.components
 	import flash.globalization.NumberFormatter;
 	
 	import net.digitalprimates.weatherunderground.data.GeoLocation;
-	import net.digitalprimates.weatherunderground.data.LocationForecast;
+	import net.digitalprimates.weatherunderground.data.ExtendedForecastData;
 	import net.digitalprimates.weatherunderground.events.ServiceEvent;
 	import net.digitalprimates.weatherunderground.services.ForecastService;
 	import net.digitalprimates.weatherunderground.services.GeoLookupService;
@@ -52,7 +52,7 @@ package net.digitalprimates.weatherunderground.components
 		protected function handleForecastDataChanged(event:ServiceEvent):void
 		{
 			// TODO Auto-generated method stub
-			var locForecast:LocationForecast = new LocationForecast(XML(event.xml));
+			var locForecast:ExtendedForecastData = new ExtendedForecastData(XML(event.xml));
 			
 		}
 		
